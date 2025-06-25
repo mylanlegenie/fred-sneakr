@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sneaker - Boutique</title>
+    <link rel="stylesheet" href="css/boutique.css" />
+</head>
+
+<body>
+    <header>
+        <a id="a-logo" href="/">
+            <div class="logo">Sneaker</div>
+        </a>
+        <nav>
+            <ul>
+                <li><a href="boutique.html" class="active">Boutique</a></li>
+                <li><a href="apropos.html">À propos</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="panier.html">Panier</a></li>
+                <li><a href="connexion.html">Connexion</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="products">
+            <h1>Nos sneakers</h1>
+            <div class="grid">
+                <div class="card">
+                    <div class="img-placeholder">Image 1</div>
+                    <h3>Sneaker Alpha</h3>
+                    <p>Style urbain moderne</p>
+                    <span class="price">99,99 €</span>
+                    <button class="add-to-cart" data-name="Sneaker Alpha" data-price="99.99">Ajouter au panier</button>
+                </div>
+                <div class="card">
+                    <div class="img-placeholder">Image 1</div>
+                    <h3>Sneaker Alpha</h3>
+                    <p>Style urbain moderne</p>
+                    <span class="price">99,99 €</span>
+                    <button class="add-to-cart" data-name="Sneaker Alpha" data-price="99.99">Ajouter au panier</button>
+                </div>
+                <div class="card">
+                    <div class="img-placeholder">Image 1</div>
+                    <h3>Sneaker Alpha</h3>
+                    <p>Style urbain moderne</p>
+                    <span class="price">99,99 €</span>
+                    <button class="add-to-cart" data-name="Sneaker Alpha" data-price="99.99">Ajouter au panier</button>
+                </div>
+                <div class="card">
+                    <div class="img-placeholder">Image 1</div>
+                    <h3>Sneaker Alpha</h3>
+                    <p>Style urbain moderne</p>
+                    <span class="price">99,99 €</span>
+                    <button class="add-to-cart" data-name="Sneaker Alpha" data-price="99.99">Ajouter au panier</button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Sneaker. Tous droits réservés.</p>
+    </footer>
+</body>
+<script>
+    const buttons = document.querySelectorAll(".add-to-cart");
+
+    buttons.forEach((btn) => {
+        btn.addEventListener("click", () => {
+            const name = btn.dataset.name;
+            const price = parseFloat(btn.dataset.price);
+
+            const cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+            const existing = cart.find(item => item.name === name);
+            if (existing) {
+                existing.quantity += 1;
+            } else {
+                cart.push({ name, price, quantity: 1 });
+            }
+
+            localStorage.setItem("cart", JSON.stringify(cart));
+            alert(`"${name}" a été ajouté au panier.`);
+        });
+    });
+</script>
+
+
+</html>

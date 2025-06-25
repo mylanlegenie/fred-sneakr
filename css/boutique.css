@@ -1,0 +1,140 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background: #fff;
+    color: #111;
+    padding: 0 1rem;
+}
+
+html,
+body {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    flex: 1;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 0;
+    background-color: #fff;
+    border-bottom: 1px solid #eee;
+}
+
+.logo {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #ff1414;
+}
+
+nav ul {
+    display: flex;
+    gap: 1.2rem;
+    list-style: none;
+}
+
+nav a {
+    font-weight: 500;
+    color: #111;
+    transition: color 0.3s;
+}
+
+nav a:hover,
+nav a.active {
+    color: #ff1414;
+}
+
+.products {
+    padding: 3rem 1rem;
+}
+
+.products h1 {
+    text-align: center;
+    font-size: 2rem;
+    color: #ff1414;
+    margin-bottom: 2rem;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.5rem;
+}
+
+.card {
+    background: #f8f8f8;
+    border-radius: 10px;
+    padding: 1rem;
+    text-align: center;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.05);
+    transition: transform 0.2s ease;
+}
+
+.card:hover {
+    transform: scale(1.02);
+}
+
+.img-placeholder {
+    height: 200px;
+    background: #ddd;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    color: #888;
+}
+
+.price {
+    display: block;
+    margin-top: 0.5rem;
+    font-weight: bold;
+    color: #ff1414;
+}
+
+footer {
+    text-align: center;
+    padding: 2rem 0;
+    background-color: #f2f2f2;
+    font-size: 0.9rem;
+    color: #666;
+}
+
+@media (max-width: 600px) {
+    nav ul {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+}
+
+.add-to-cart {
+    margin-top: 1rem;
+    padding: 0.5rem 1rem;
+    background-color: #c00000;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.add-to-cart:hover {
+    background-color: #a00000;
+}

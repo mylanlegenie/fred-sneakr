@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sneaker - Panier</title>
+    <link rel="stylesheet" href="css/panier.css" />
+</head>
+
+<body>
+    <header>
+        <a href="">
+            <div class="logo">Sneaker</div>
+        </a>
+        <nav>
+            <ul>
+
+                <li><a href="boutique.html">Boutique</a></li>
+                <li><a href="apropos.html">À propos</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="panier.html" class="active">Panier</a></li>
+                <li><a href="connexion.html">Connexion</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="cart">
+            <h1>Votre panier</h1>
+
+            <div class="cart-items" id="cart-container">
+                <!-- Contenu généré par JS -->
+            </div>
+
+            <div class="total" id="cart-total">
+                <p>Total : <strong>0,00 €</strong></p>
+                <button id="order-btn">Passer la commande</button>
+                <button id="clear-btn" style="background-color: #888;">Vider le panier</button>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Sneaker. Tous droits réservés.</p>
+    </footer>
+
+    <script>
+        const cartContainer = document.getElementById("cart-container");
+        const cartTotal = document.getElementById("cart-total");
+        const cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+        let total = 0;
+
+        function updateCartDisplay() {
+            cartContainer.innerHTML = "";
+            total = 0;
+
+            if (cart.length === 0) {
+                cartContainer.innerHTML = "<p>Votre panier est vide.</p>";
+                cartTotal.style.display = "none";
+                return;
+            }
+
+            cartTotal.style.display = "block";
+
+            cart.forEach((item, index) => {
+                const itemDiv = document.createElement("div");
+                itemDiv.classList.add("cart-item");
+                itemDiv.innerHTML = `
+        <div class="img-placeholder">Image</div>
+        <div class="details">
+          <h3>${item.name}</h3>
+          <p>Quantité : ${item.quantity}</p>
+          <span class="price">${(item.price * item.quantity).toFixed(2)} €</span>
+        </div>
+        <button class="remove-btn" data-index="${index}">Supprimer</button>
+      `;
+                cartContainer.appendChild(itemDiv);
+                total += item.price * item.quantity;
+            });
+
+            cartTotal.querySelector("strong").innerText = `${total.toFixed(2)} €`;
+
+            document.querySelectorAll(".remove-btn").forEach(btn => {
+                btn.addEventListener("click", () => {
+                    const index = btn.dataset.index;
+                    cart.splice(index, 1);
+                    localStorage.setItem("cart", JSON.stringify(cart));
+                    updateCartDisplay();
+                });
+            });
+        }
+
+        updateCartDisplay();
+
+        document.getElementById("order-btn")?.addEventListener("click", () => {
+            alert("Commande simulée !");
+            localStorage.removeItem("cart");
+            location.reload();
+        });
+
+        document.getElementById("clear-btn")?.addEventListener("click", () => {
+            if (confirm("Vider complètement le panier ?")) {
+                localStorage.removeItem("cart");
+                location.reload();
+            }
+        });
+    </script>
+
+</body>
+
+</html>

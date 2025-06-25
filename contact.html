@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sneaker - Contact</title>
+    <link rel="stylesheet" href="css/contact.css" />
+</head>
+
+<body>
+    <header>
+        <a id="a-logo" href="/">
+            <div class="logo">Sneaker</div>
+        </a>
+        <nav>
+            <ul>
+                <li><a href="boutique.html">Boutique</a></li>
+                <li><a href="apropos.html">À propos</a></li>
+                <li><a href="contact.html" class="active">Contact</a></li>
+                <li><a href="panier.html">Panier</a></li>
+                <li><a href="connexion.html">Connexion</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="contact">
+            <h1>Contactez-nous</h1>
+            <p>Une question ? Un souci ? Nous sommes là pour vous répondre.</p>
+
+            <form>
+                <label for="name">Nom</label>
+                <input type="text" id="name" name="name" required />
+
+                <label for="email">Adresse email</label>
+                <input type="email" id="email" name="email" required />
+
+                <label for="message">Votre message</label>
+                <textarea id="message" name="message" rows="6" required></textarea>
+
+                <button type="submit">Envoyer</button>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Sneaker. Tous droits réservés.</p>
+    </footer>
+</body>
+
+</html>
